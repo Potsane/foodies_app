@@ -1,4 +1,4 @@
 import androidx.compose.ui.window.ComposeUIViewController
-import ui.App
+import ui.base.MainContainer
 
-fun MainViewController() = ComposeUIViewController { App() }
+fun MainViewController() = ComposeUIViewController { MainContainer() }
