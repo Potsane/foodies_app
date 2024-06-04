@@ -1,4 +1,4 @@
-package data
+package data.source.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -18,13 +18,13 @@ class FoodiesClient {
     fun build() : HttpClient{
         return HttpClient {
 
-            defaultRequest {
+            /*defaultRequest {
                 url {
                     protocol = URLProtocol.HTTP
                     host = this@FoodiesClient.host
                 }
                 header(HttpHeaders.ContentType, "application/json")
-            }
+            }*/
 
             install(ContentNegotiation) {
                 json(Json {

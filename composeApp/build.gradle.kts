@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    kotlin("plugin.serialization") version "1.9.20"
 }
 
 kotlin {
@@ -24,7 +25,6 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
-            isStatic = true
         }
     }
     
@@ -48,6 +48,10 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
+
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.kotlinx.coroutines.core)
+            api(libs.koin.compose)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -91,4 +95,3 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
-
