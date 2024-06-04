@@ -3,9 +3,8 @@ package data.source.remote
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.request.header
-import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
+import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
@@ -15,16 +14,15 @@ class FoodiesClient {
 
     fun host(host: String) = apply { this.host = host }
 
-    fun build() : HttpClient{
+    fun build(): HttpClient {
         return HttpClient {
 
-            /*defaultRequest {
+            defaultRequest {
+                host = this@FoodiesClient.host
                 url {
-                    protocol = URLProtocol.HTTP
-                    host = this@FoodiesClient.host
+                    protocol = URLProtocol.HTTPS
                 }
-                header(HttpHeaders.ContentType, "application/json")
-            }*/
+            }
 
             install(ContentNegotiation) {
                 json(Json {
