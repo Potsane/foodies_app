@@ -8,7 +8,7 @@ import org.koin.dsl.module
 val dataModule = module {
     single<HttpClient> {
         FoodiesClient()
-            .host("themealdb.com")
+            .host(baseUrl = "https://www.themealdb.com/api/json/v1/1/")
             .build()
     }
     single<FoodiesService> { FoodiesService(get()) }

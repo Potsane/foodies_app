@@ -17,3 +17,9 @@ data class Category(
     @SerialName("strCategoryDescription")
     val description: String,
 )
+
+@Serializable
+data class CategoryResponse(
+    @SerialName("categories")
+    val categories : List<Category>
+)
