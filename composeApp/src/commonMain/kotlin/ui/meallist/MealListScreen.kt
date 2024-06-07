@@ -8,15 +8,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.koin.compose.koinInject
 import ui.components.SearchBar
+import ui.components.TagListView
 
 @Composable
 fun FoodListScreen(
@@ -37,5 +34,11 @@ fun FoodListScreen(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
         ) {}
 
+        TagListView(
+            modifier = Modifier.padding(
+                horizontal = 8.dp,
+                vertical = 24.dp
+            )
+        )
     }
 }
