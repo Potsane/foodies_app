@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Ingredient(
+data class IngredientDto(
     @SerialName("idIngredient")
     val id : String,
     @SerialName("strIngredient")
@@ -18,5 +18,5 @@ data class Ingredient(
 @Serializable
 data class IngredientsResponse(
     @SerialName("meals")
-    val ingredients : List<Ingredient>
+    val ingredients : List<IngredientDto>
 )
