@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.koin.compose.koinInject
+import ui.components.MealItemCard
 import ui.components.SearchBar
 import ui.components.TagListView
 
@@ -40,5 +41,17 @@ fun FoodListScreen(
                 vertical = 24.dp
             )
         )
+
+        Text(
+            modifier = Modifier.padding(
+                horizontal = 16.dp,
+                vertical = 8.dp
+            ),
+            color = MaterialTheme.colorScheme.primary,
+            text = "All the meals",
+            style = MaterialTheme.typography.titleLarge,
+        )
+
+        MealItemCard(modifier= Modifier.padding(16.dp))
     }
 }

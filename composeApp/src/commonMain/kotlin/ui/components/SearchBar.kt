@@ -48,14 +48,14 @@ fun SearchBar(
             leadingIcon = {
                 Icon(
                     modifier = Modifier.clickable { if (text.isNotEmpty()) onSearch(text) },
-                    tint = MaterialTheme.colorScheme.secondary,
+                    tint = MaterialTheme.colorScheme.primary,
                     imageVector = Icons.Default.Search,
                     contentDescription = null
                 )
             },
             trailingIcon = {
                 Icon(
-                    tint = MaterialTheme.colorScheme.secondary,
+                    tint = MaterialTheme.colorScheme.primary,
                     imageVector = Icons.Default.Menu,
                     contentDescription = null
                 )
