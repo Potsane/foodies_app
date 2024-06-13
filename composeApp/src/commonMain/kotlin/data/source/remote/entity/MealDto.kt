@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * ingredients and measures to a hash map.
  **/
 @Serializable
-data class Meal(
+data class MealDto(
     @SerialName("idMeal")
     val id: String,
 
@@ -31,7 +31,7 @@ data class Meal(
     val tags: String?,
 
     @SerialName("strYoutube")
-    val videoUrl: String?,
+    val videoUrl: String,
 
     // Ingredients
 
@@ -159,4 +159,4 @@ data class Meal(
 )
 
 @Serializable
-data class MealsResponse(@SerialName("meals") val meals: List<Meal>)
+data class MealsResponse(@SerialName("meals") val meals: List<MealDto>)

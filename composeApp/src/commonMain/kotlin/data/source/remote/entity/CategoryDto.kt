@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Category(
+data class CategoryDto(
     @SerialName("idCategory")
     val id: String,
 
@@ -21,5 +21,5 @@ data class Category(
 @Serializable
 data class CategoryResponse(
     @SerialName("categories")
-    val categories : List<Category>
+    val categories : List<CategoryDto>
 )
