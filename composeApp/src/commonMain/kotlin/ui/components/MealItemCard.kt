@@ -21,9 +21,11 @@ import androidx.compose.ui.layout.ContentScale.Companion.FillBounds
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import ui.model.Meal
 
 @Composable
 fun MealItemCard(
+    item: Meal,
     modifier: Modifier = Modifier
 ) {
     Box {
@@ -50,13 +52,13 @@ fun MealItemCard(
         }
 
         AsyncImage(
-            model = "https://www.thetimes.com/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F6c67d4df-1a80-4847-a4e8-3b56a0cb810f.jpg?crop=1564%2C880%2C318%2C0",
+            model = item.imageUrl,
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .offset(x = 0.dp, y =  (-40).dp)
+                .offset(x = 0.dp, y = (-40).dp)
                 .size(120.dp)
-                .clip(CircleShape)
-            ,contentScale = FillBounds,
+                .clip(CircleShape),
+            contentScale = FillBounds,
             contentDescription = null,
         )
     }
