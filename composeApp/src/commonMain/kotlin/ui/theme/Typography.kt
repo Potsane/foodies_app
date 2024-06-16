@@ -26,13 +26,12 @@ val Typography = Typography(
         fontSize = 16.sp,
         color = SweetPink,
         fontWeight = FontWeight.Bold
-    )
-    /*labelSmall = TextStyle(
+    ),
+    labelSmall = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     )
-    */
 )

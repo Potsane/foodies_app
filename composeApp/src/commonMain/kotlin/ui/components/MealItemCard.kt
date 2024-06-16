@@ -1,13 +1,12 @@
 package ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -17,8 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale.Companion.FillBounds
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import ui.model.Meal
@@ -28,38 +28,50 @@ fun MealItemCard(
     item: Meal,
     modifier: Modifier = Modifier
 ) {
-    Box {
-        Card(
-            shape = RoundedCornerShape(16.dp),
-            modifier = modifier.wrapContentWidth()
+    Card(
+        shape = RoundedCornerShape(8.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
+
+        Row(
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier
+                .padding(8.dp)
         ) {
-            Column(
+
+            AsyncImage(
+                model = item.imageUrl,
                 modifier = Modifier
-                    .background(color = MaterialTheme.colorScheme.primary)
-                    .wrapContentSize()
-                    .padding(
-                        vertical = 64.dp,
-                        horizontal = 8.dp
-                    ),
+                    .clip(CircleShape)
+                    .size(120.dp),
+                contentScale = ContentScale.FillBounds,
+                contentDescription = null,
+            )
+
+            Column(
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.padding(start = 16.dp, top = 8.dp)
             ) {
 
                 Text(
-                    text = "This is the Meal name",
+                    text = item.name,
                     style = MaterialTheme.typography.titleMedium,
                     textAlign = TextAlign.Center
                 )
-            }
-        }
 
-        AsyncImage(
-            model = item.imageUrl,
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .offset(x = 0.dp, y = (-40).dp)
-                .size(120.dp)
-                .clip(CircleShape),
-            contentScale = FillBounds,
-            contentDescription = null,
-        )
+                Text(
+                    modifier = Modifier.padding(top = 4.dp),
+                    maxLines = 3,
+                    text = item.instructions,
+                    style = MaterialTheme.typography.labelSmall,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+        }
     }
 }
