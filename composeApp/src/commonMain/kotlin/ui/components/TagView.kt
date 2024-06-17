@@ -34,7 +34,10 @@ private val categories = listOf(
 )
 
 @Composable
-fun TagListView(modifier: Modifier = Modifier) {
+fun TagListView(
+    modifier: Modifier = Modifier,
+    onTagChanged: (String) -> Unit
+) {
     var selectedItem by remember { mutableStateOf(0) }
     Row(
         modifier = modifier,
@@ -47,6 +50,7 @@ fun TagListView(modifier: Modifier = Modifier) {
             ) { index, item ->
                 TagView(selectedItem = selectedItem, text = item, currentIndex = index) {
                     selectedItem = index
+                    onTagChanged(item)
                 }
             }
         }

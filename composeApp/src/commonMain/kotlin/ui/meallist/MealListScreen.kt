@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import org.koin.compose.koinInject
 import ui.components.MealItemCard
@@ -34,17 +35,15 @@ fun FoodListScreen(
             modifier = Modifier.padding(16.dp),
             text = "Let's go, \nFind you Favourite meals",
             style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary,
         )
         SearchBar(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
         ) {}
 
         TagListView(
-            modifier = Modifier.padding(
-                horizontal = 8.dp,
-                vertical = 24.dp
-            )
-        )
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 24.dp)
+        ) { viewModel.getMealsByCategory(it) }
 
         Text(
             modifier = Modifier.padding(
@@ -53,7 +52,8 @@ fun FoodListScreen(
             ),
             color = MaterialTheme.colorScheme.primary,
             text = "All the meals",
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Normal
         )
 
         LazyColumn(
@@ -62,7 +62,7 @@ fun FoodListScreen(
                 .padding(horizontal = 8.dp),
         ) {
             itemsIndexed(meals.value) { _, item ->
-                MealItemCard(item, modifier = Modifier.padding(4.dp ))
+                MealItemCard(item, modifier = Modifier.padding(4.dp))
             }
         }
     }
