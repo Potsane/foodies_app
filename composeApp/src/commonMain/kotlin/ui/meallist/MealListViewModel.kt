@@ -20,4 +20,13 @@ class MealListViewModel(private val mealListRepository: MealListRepository) : Ba
             }
         }
     }
+
+    fun getMealsByCategory(category: String) {
+        _meals.value = emptyList()
+        viewModelScope.launch {
+            mealListRepository.getMealsByCategory(category)?.let {
+                _meals.value = it
+            }
+        }
+    }
 }
