@@ -3,8 +3,8 @@ package data.util
 import data.source.remote.entity.MealDto
 import ui.model.Meal
 
-fun List<MealDto>?.toMealList(): List<Meal>? {
-    if (this == null) return null
+fun List<MealDto>?.toMealList(): List<Meal> {
+    if (this == null) throw NullServerResponseException()
     val meals = mutableListOf<Meal>()
     this.map {
         meals.add(

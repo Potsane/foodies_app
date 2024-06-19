@@ -1,32 +1,23 @@
 package ui.meallist
 
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import repo.meallist.MealListRepository
 import ui.base.BaseViewModel
+import ui.base.Result
 import ui.model.Meal
 
 class MealListViewModel(private val mealListRepository: MealListRepository) : BaseViewModel() {
 
-    private val _meals = MutableStateFlow(listOf<Meal>())
-    val meals: StateFlow<List<Meal>> = _meals
+    private val _meals = MutableStateFlow<Result<List<Meal>>>(Result.Loading)
+    val meals: StateFlow<Result<List<Meal>>> = _meals
 
-    init {
-        viewModelScope.launch {
-            mealListRepository.getMeals()?.let {
-                _meals.value = it
-            }
+    init{
+        withProgress(_meals){
+            mealListRepository.getMeals()
         }
     }
 
     fun getMealsByCategory(category: String) {
-        _meals.value = emptyList()
-        viewModelScope.launch {
-            mealListRepository.getMealsByCategory(category)?.let {
-                _meals.value = it
-            }
-        }
     }
 }
