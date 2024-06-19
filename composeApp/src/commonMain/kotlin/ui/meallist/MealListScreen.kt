@@ -19,6 +19,7 @@ import org.koin.compose.koinInject
 import ui.components.MealItemCard
 import ui.components.SearchBar
 import ui.components.TagListView
+import ui.components.UiStateHandler
 
 @Composable
 fun FoodListScreen(
@@ -56,13 +57,15 @@ fun FoodListScreen(
             fontWeight = FontWeight.Normal
         )
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 8.dp),
-        ) {
-            itemsIndexed(meals.value) { _, item ->
-                MealItemCard(item, modifier = Modifier.padding(4.dp))
+        UiStateHandler(meals.value) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 8.dp),
+            ) {
+                itemsIndexed(it) { _, item ->
+                    MealItemCard(item, modifier = Modifier.padding(4.dp))
+                }
             }
         }
     }
