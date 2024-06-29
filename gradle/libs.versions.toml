@@ -20,7 +20,7 @@ koin = "3.4.3"
 koin-compose = "1.1.5"
 kotlinxCoroutinesCore = "1.8.1"
 lifecycleViewmodelCompose = "2.8.0"
-coil3 = "3.0.0-alpha06"
+coil3 = "3.0.0-alpha07"
 lifecycleRuntimeComposeAndroid = "2.8.2"
 
 lifecycleViewModel = "2.8.2"
