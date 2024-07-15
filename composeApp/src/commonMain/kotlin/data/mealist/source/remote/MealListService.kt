@@ -1,16 +1,16 @@
-package data.source.remote
+package data.mealist.source.remote
 
-import data.source.remote.entity.CategoryDto
-import data.source.remote.entity.CategoryResponse
-import data.source.remote.entity.IngredientDto
-import data.source.remote.entity.IngredientsResponse
-import data.source.remote.entity.MealDto
-import data.source.remote.entity.MealsResponse
+import data.mealist.dto.CategoryDto
+import data.mealist.dto.CategoryResponse
+import data.mealist.dto.IngredientDto
+import data.mealist.dto.IngredientsResponse
+import data.mealist.dto.MealDto
+import data.mealist.dto.MealsResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
-class FoodiesService(private val client: HttpClient) {
+class MealListService(private val client: HttpClient) {
 
     suspend fun getCategories(): List<CategoryDto> {
         val response: CategoryResponse = client.get("categories.php").body()

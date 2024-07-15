@@ -1,4 +1,4 @@
-import data.source.local.FoodiesAppDatabase
+import data.database.FoodiesAppDatabase
 
 import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver

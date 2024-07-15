@@ -1,18 +1,18 @@
 package injection
 
-import data.source.remote.FoodiesClient
-import data.source.remote.FoodiesService
+import data.client.FoodiesAppClient
+import data.mealist.source.remote.MealListService
 import io.ktor.client.HttpClient
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val dataModule = module {
     single<HttpClient> {
-        FoodiesClient()
+        FoodiesAppClient()
             .host(baseUrl = "https://www.themealdb.com/api/json/v1/1/")
             .build()
     }
-    single<FoodiesService> { FoodiesService(get()) }
+    single<MealListService> { MealListService(get()) }
 }
 
 expect fun dbModule() :  Module

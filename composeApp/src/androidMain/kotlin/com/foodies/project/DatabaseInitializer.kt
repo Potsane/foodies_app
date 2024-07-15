@@ -3,7 +3,7 @@ package com.foodies.project
 import android.content.Context
 import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import data.source.local.FoodiesAppDatabase
+import data.database.FoodiesAppDatabase
 
 fun getAppDatabase(context: Context): FoodiesAppDatabase {
     val databaseFile = context.getDatabasePath("foodies_app.db")

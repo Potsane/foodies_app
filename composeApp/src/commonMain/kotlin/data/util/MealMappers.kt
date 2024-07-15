@@ -1,7 +1,7 @@
 package data.util
 
-import data.source.remote.entity.MealDto
-import ui.model.Meal
+import data.mealist.dto.MealDto
+import domain.meallist.model.Meal
 
 fun List<MealDto>?.toMealList(): List<Meal> {
     if (this == null) throw NullServerResponseException()

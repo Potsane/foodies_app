@@ -1,8 +1,9 @@
-package data.source.local
+package data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import ui.model.Meal
+import data.mealist.source.local.MealDao
+import domain.meallist.model.Meal
 
 @Database(
     entities = [Meal::class],

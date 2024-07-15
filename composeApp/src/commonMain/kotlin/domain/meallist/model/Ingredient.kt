@@ -1,4 +1,4 @@
-package ui.model
+package domain.meallist.model
 
 data class Ingredient(
     val id: String,

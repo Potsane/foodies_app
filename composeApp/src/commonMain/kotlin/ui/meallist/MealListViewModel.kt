@@ -2,10 +2,10 @@ package ui.meallist
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import repo.meallist.MealListRepository
+import domain.meallist.repository.MealListRepository
 import ui.base.BaseViewModel
 import ui.base.Result
-import ui.model.Meal
+import domain.meallist.model.Meal
 
 class MealListViewModel(private val mealListRepository: MealListRepository) : BaseViewModel() {
 

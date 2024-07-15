@@ -1,13 +1,13 @@
-package data.mealist
+package data.mealist.repo
 
-import data.source.remote.FoodiesService
+import data.mealist.source.remote.MealListService
 import data.util.toMealList
-import repo.meallist.MealListRepository
+import domain.meallist.repository.MealListRepository
 import ui.base.Result
-import ui.model.Meal
+import domain.meallist.model.Meal
 
 class MealListRepositoryImpl(
-    private val service: FoodiesService
+    private val service: MealListService
 ) : MealListRepository {
 
     override suspend fun getMeals(): List<Meal> {
