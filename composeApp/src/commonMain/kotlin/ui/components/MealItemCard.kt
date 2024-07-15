@@ -52,6 +52,7 @@ fun MealItemCard(
             Column(
                 modifier = Modifier
                     .padding(start = 16.dp, top = 8.dp)
+                    .fillMaxWidth()
             ) {
 
                 Text(
@@ -69,7 +70,6 @@ fun MealItemCard(
                     color = Color.White
                 )
             }
-
         }
     }
 }

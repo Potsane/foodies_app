@@ -1,8 +1,8 @@
 package com.foodies.project
 
 import android.app.Application
-import org.koin.core.context.startKoin
 import injection.modules
+import org.koin.core.context.startKoin
 
 class FoodiesApp : Application() {
     override fun onCreate() {
@@ -10,7 +10,7 @@ class FoodiesApp : Application() {
         initKoin()
     }
 
-    private fun initKoin(){
+    private fun initKoin() {
         startKoin {
             modules(modules)
         }
