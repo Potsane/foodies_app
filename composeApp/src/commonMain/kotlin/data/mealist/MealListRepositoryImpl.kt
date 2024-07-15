@@ -11,7 +11,12 @@ class MealListRepositoryImpl(
 ) : MealListRepository {
 
     override suspend fun getMeals(): List<Meal> {
-        return  service.getMeals('a').toMealList()
+        val meals = mutableListOf<Meal>()
+        val keys = "abcdefghijklmnoprstvwy".toCharArray() //no quxz
+        keys.forEach {
+            meals.addAll(service.getMeals(it).toMealList())
+        }
+        return meals
     }
 
     override suspend fun getMealsByCategory(category: String): Result<List<Meal>> {

@@ -8,6 +8,10 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     kotlin("plugin.serialization") version "1.9.20"
+
+    //Room Plugins
+    id("androidx.room") version "2.7.0-alpha05"
+    id("com.google.devtools.ksp") version "2.0.0-1.0.22"
 }
 
 kotlin {
@@ -27,9 +31,14 @@ kotlin {
             baseName = "ComposeApp"
         }
     }
-    
+
+    // Room: Adding ksp src directory to use AppDatabase::class.instantiateImpl() in iosMain:
+    // Due to https://issuetracker.google.com/u/0/issues/342905180
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+    }
+
     sourceSets {
-        
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -58,6 +67,10 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.mp)
             implementation(libs.coil.network.ktor)
+
+            //Room
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -99,5 +112,23 @@ android {
     }
     dependencies {
         debugImplementation(compose.uiTooling)
+    }
+}
+
+//Room: Path where we want to generate the schemas
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+//Room: KSP For processing Room annotations,Otherwise we will get Is Room annotation processor correctly configured? error
+dependencies {
+    // Update: https://issuetracker.google.com/u/0/issues/342905180
+    add("kspCommonMainMetadata", "androidx.room:room-compiler:2.7.0-alpha04")
+}
+
+//Room: Make all source sets to depend on kspCommonMainKotlinMetadata:  Update: https://issuetracker.google.com/u/0/issues/342905180
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata" ) {
+        dependsOn("kspCommonMainKotlinMetadata")
     }
 }

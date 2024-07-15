@@ -17,7 +17,7 @@ fun List<MealDto>?.toMealList(): List<Meal> {
                 it.imageUrl,
                 it.tags,
                 it.videoUrl,
-                crateIngredientsMap(it)
+                //crateIngredientsMap(it)
             )
         )
     }
