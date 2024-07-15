@@ -1,9 +1,9 @@
-package data.source.local
+package data.mealist.source.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import ui.model.Meal
+import domain.meallist.model.Meal
 
 @Dao
 interface MealDao {

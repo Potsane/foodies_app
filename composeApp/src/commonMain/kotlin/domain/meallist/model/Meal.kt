@@ -1,4 +1,4 @@
-package ui.model
+package domain.meallist.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

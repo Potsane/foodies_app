@@ -1,7 +1,7 @@
 package data.util
 
-import data.source.remote.entity.IngredientDto
-import ui.model.Ingredient
+import data.mealist.dto.IngredientDto
+import domain.meallist.model.Ingredient
 
 fun List<IngredientDto>?.toIngredientList(): List<Ingredient>? {
     if (this == null) return null

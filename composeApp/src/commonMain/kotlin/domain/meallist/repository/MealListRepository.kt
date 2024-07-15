@@ -1,7 +1,7 @@
-package repo.meallist
+package domain.meallist.repository
 
 import ui.base.Result
-import ui.model.Meal
+import domain.meallist.model.Meal
 
 interface MealListRepository {
 

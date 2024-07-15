@@ -1,6 +1,6 @@
 package injection
 
-import data.source.local.FoodiesAppDatabase
+import data.database.FoodiesAppDatabase
 import getAppDatabase
 import org.koin.dsl.module
 

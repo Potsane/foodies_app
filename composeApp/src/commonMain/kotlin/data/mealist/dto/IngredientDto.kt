@@ -1,4 +1,4 @@
-package data.source.remote.entity
+package data.mealist.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
