@@ -3,17 +3,17 @@ package data.mealist.source.local
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import domain.meallist.model.Meal
+import data.mealist.dto.MealDto
 
 @Dao
 interface MealDao {
 
    @Insert
-   suspend fun insert(meal: Meal)
+   suspend fun insert(meal: MealDto)
 
- @Query("SELECT * FROM meal")
-   suspend fun getAllMeals() : List <Meal>
+ @Query("SELECT * FROM MealDto")
+   suspend fun getAllMeals() : List <MealDto>
 
-   @Query("SELECT * FROM meal WHERE NAME=:name")
-   suspend fun getMeal(name : String) : Meal
+   @Query("SELECT * FROM MealDto WHERE NAME=:name")
+   suspend fun getMeal(name : String) : MealDto
 }

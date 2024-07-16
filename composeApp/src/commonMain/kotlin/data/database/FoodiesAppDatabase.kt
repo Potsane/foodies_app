@@ -2,12 +2,12 @@ package data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import data.mealist.dto.MealDto
 import data.mealist.source.local.MealDao
-import domain.meallist.model.Meal
 
 @Database(
-    entities = [Meal::class],
-    version = 2
+    entities = [MealDto::class],
+    version = 3
 )
 abstract class FoodiesAppDatabase : RoomDatabase(), DB {
     abstract fun mealDao(): MealDao
