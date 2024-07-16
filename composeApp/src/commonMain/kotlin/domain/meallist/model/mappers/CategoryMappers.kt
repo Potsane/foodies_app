@@ -1,4 +1,4 @@
-package data.util
+package domain.meallist.model.mappers
 
 import data.mealist.dto.CategoryDto
 import domain.meallist.model.Category

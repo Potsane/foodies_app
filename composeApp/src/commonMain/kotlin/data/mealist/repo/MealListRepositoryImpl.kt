@@ -1,7 +1,7 @@
 package data.mealist.repo
 
 import data.mealist.source.remote.MealListService
-import data.util.toMealList
+import domain.meallist.model.mappers.toMealList
 import domain.meallist.repository.MealListRepository
 import ui.base.Result
 import domain.meallist.model.Meal

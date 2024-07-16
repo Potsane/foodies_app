@@ -1,4 +1,4 @@
-package data.util
+package domain.meallist.model.mappers
 
 import data.mealist.dto.MealDto
 import domain.meallist.model.Meal
@@ -17,7 +17,7 @@ fun List<MealDto>?.toMealList(): List<Meal> {
                 it.imageUrl,
                 it.tags,
                 it.videoUrl,
-                //crateIngredientsMap(it)
+                crateIngredientsMap(it)
             )
         )
     }

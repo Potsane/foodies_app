@@ -1,5 +1,7 @@
 package data.mealist.dto
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -7,8 +9,10 @@ import kotlinx.serialization.Serializable
  * TODO - We need to find a way to parse these
  * ingredients and measures to a hash map.
  **/
+@Entity
 @Serializable
 data class MealDto(
+    @PrimaryKey
     @SerialName("idMeal")
     val id: String,
 
