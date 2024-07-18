@@ -5,5 +5,5 @@ import org.koin.dsl.module
 import domain.meals.repository.MealListRepository
 
 val repositoriesModule = module {
-    single<MealListRepository> { MealListRepositoryImpl(get()) }
+    single<MealListRepository> { MealListRepositoryImpl(get(),get()) }
 }
