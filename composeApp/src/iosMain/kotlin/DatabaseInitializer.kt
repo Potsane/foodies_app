@@ -2,7 +2,7 @@ import data.common.database.FoodiesAppDatabase
 
 import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import data.source.local.instantiateImpl
+import data.common.database.instantiateImpl
 import platform.Foundation.NSHomeDirectory
 
 fun getAppDatabase(): FoodiesAppDatabase {
