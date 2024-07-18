@@ -1,8 +1,8 @@
 package injection
 
-import data.mealist.repo.MealListRepositoryImpl
+import data.meals.repo.MealListRepositoryImpl
 import org.koin.dsl.module
-import domain.meallist.repository.MealListRepository
+import domain.meals.repository.MealListRepository
 
 val repositoriesModule = module {
     single<MealListRepository> { MealListRepositoryImpl(get()) }

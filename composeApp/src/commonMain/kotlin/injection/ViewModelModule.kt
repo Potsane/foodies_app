@@ -1,8 +1,8 @@
 package injection
 
 import org.koin.dsl.module
-import ui.base.BaseViewModel
-import ui.meallist.MealListViewModel
+import presentation.base.BaseViewModel
+import presentation.ui.meals.MealListViewModel
 
 val viewModelsModule = module {
     factory { MealListViewModel(get()) }

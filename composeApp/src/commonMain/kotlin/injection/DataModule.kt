@@ -1,7 +1,7 @@
 package injection
 
-import data.client.FoodiesAppClient
-import data.mealist.source.remote.MealListService
+import data.common.client.FoodiesAppClient
+import data.meals.source.remote.MealListService
 import io.ktor.client.HttpClient
 import org.koin.core.module.Module
 import org.koin.dsl.module
