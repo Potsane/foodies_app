@@ -11,23 +11,22 @@ androidx-espresso-core = "3.5.1"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.1.5"
 compose-plugin = "1.6.10"
+datastoreCoreOkio = "1.1.1"
 junit = "4.13.2"
 kotlin = "2.0.0"
 
+kotlinxDatetime = "0.4.1"
 ktorClient = "2.3.11"
-#koin = "3.5.6"
 koin = "3.6.0-Beta4"
 koin-compose = "1.2.0-Beta4"
 roomCommon = "2.7.0-alpha05"
 kotlinxCoroutinesCore = "1.8.1"
 lifecycleViewmodelCompose = "2.8.0"
 coil3 = "3.0.0-alpha06"
-lifecycleRuntimeComposeAndroid = "2.8.2"
 
 lifecycleViewModel = "2.8.2"
 roomRuntime = "2.7.0-alpha05"
 sqliteBundled = "2.5.0-SNAPSHOT"
-
 
 [libraries]
 #AndroidX
@@ -39,6 +38,7 @@ androidx-material = { group = "com.google.android.material", name = "material", 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycleViewModel"}
@@ -71,6 +71,10 @@ coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3"
 coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
 coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+
+#DataStore
+androidx-datastore-core-okio = { module = "androidx.datastore:datastore-core-okio", version.ref = "datastoreCoreOkio" }
+androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastoreCoreOkio" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
