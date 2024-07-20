@@ -10,8 +10,6 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-expect val databaseModule :  Module
-expect val dataStoreModule : Module
 val remoteDataModule = module {
     single<HttpClient> {
         FoodiesAppClient()
@@ -24,3 +22,5 @@ val remoteDataModule = module {
 val localDataModule = module{
     singleOf(::FoodieAppDataStoreImpl).bind(FoodieAppDataStore::class)
 }
+
+expect fun localDataStorageModule(): Module
