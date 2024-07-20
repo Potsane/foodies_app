@@ -3,11 +3,10 @@ package injection
 import com.foodies.project.createDataStore
 import com.foodies.project.getAppDatabase
 import data.common.database.FoodiesAppDatabase
+import org.koin.core.module.Module
 import org.koin.dsl.module
 
-actual val databaseModule = module {
-    single<FoodiesAppDatabase> { getAppDatabase(get()) }
-}
-actual val dataStoreModule = module {
+actual fun localDataStorageModule(): Module = module {
     single { createDataStore(get()) }
+    single<FoodiesAppDatabase> { getAppDatabase(get()) }
 }

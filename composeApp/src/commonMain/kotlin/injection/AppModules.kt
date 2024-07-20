@@ -2,8 +2,7 @@ package injection
 
 val modules = listOf(
     localDataModule,
-    dataStoreModule,
-    databaseModule,
+    localDataStorageModule(),
     remoteDataModule,
     repositoriesModule,
     viewModelsModule,
