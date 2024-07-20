@@ -1,3 +1,10 @@
 package injection
 
-val modules = listOf(dataModule, repositoriesModule, viewModelsModule, dbModule())
+val modules = listOf(
+    localDataModule,
+    dataStoreModule,
+    databaseModule,
+    remoteDataModule,
+    repositoriesModule,
+    viewModelsModule,
+)
