@@ -5,6 +5,6 @@ import domain.meals.model.Meal
 
 interface MealListRepository {
 
-    suspend fun getMeals(refresh : Boolean = true) :List<Meal>
+    suspend fun getMeals(shouldRefreshData : Boolean = false) :List<Meal>
     suspend fun getMealsByCategory(category: String) : Result<List<Meal>>
 }
