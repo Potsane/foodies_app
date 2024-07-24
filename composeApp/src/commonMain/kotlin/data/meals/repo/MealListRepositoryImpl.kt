@@ -7,11 +7,16 @@ import data.preferences.FoodieAppDataStore
 import domain.meals.model.Meal
 import domain.meals.model.mappers.toMealList
 import domain.meals.repository.MealListRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.Clock
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.Instant
+import kotlinx.datetime.until
 import presentation.base.Result
 
 class MealListRepositoryImpl(
@@ -20,19 +25,18 @@ class MealListRepositoryImpl(
     private val dataStore: FoodieAppDataStore
 ) : MealListRepository {
 
-    private val scope = CoroutineScope(Dispatchers.IO)
-
-    override suspend fun getMeals(refresh: Boolean): List<Meal> {
+    override suspend fun getMeals(shouldRefreshData: Boolean): List<Meal> {
         val meals = mutableListOf<MealDto>()
-        if (refresh) {
-            scope.async {
+        if (shouldRefreshData || isLocalDataInvalid()) {
+            withContext(Dispatchers.IO) {
                 meals.addAll(getRemoteMeals())
-            }.await()
-            saveMeals(meals)
+                saveMeals(meals)
+            }
         } else {
-            meals.addAll(getLocalMeals())
+            withContext(Dispatchers.IO) {
+                meals.addAll(getLocalMeals())
+            }
         }
-
         return meals.toMealList()
     }
 
@@ -41,12 +45,13 @@ class MealListRepositoryImpl(
     }
 
     private suspend fun getRemoteMeals(): List<MealDto> {
-        val meals = mutableListOf<MealDto>()
         val keys = "abcdefghijklmnoprstvwy".toCharArray() //no quxz
-        keys.forEach {
-            meals.addAll(service.getMeals(it))
+        val meals = coroutineScope {
+            keys.map { key ->
+                async { service.getMeals(key) }
+            }.awaitAll()
         }
-        return meals
+        return meals.flatten()
     }
 
     private suspend fun getLocalMeals(): List<MealDto> {
@@ -57,5 +62,13 @@ class MealListRepositoryImpl(
         database.mealDao().clearAndInsert(meals)
         val currentTime = Clock.System.now().toEpochMilliseconds()
         dataStore.updateDataPersistenceTime(currentTime)
+    }
+
+    private suspend fun isLocalDataInvalid(): Boolean {
+        val saveTime =  dataStore.getDataPersistenceTime()
+        val now = Clock.System.now()
+        val diff = Instant.fromEpochMilliseconds(saveTime)
+            .until(now, DateTimeUnit.TimeBased(3600_000_000_000))
+        return diff > 24
     }
 }

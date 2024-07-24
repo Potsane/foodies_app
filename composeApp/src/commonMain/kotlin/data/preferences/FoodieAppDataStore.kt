@@ -4,12 +4,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
 
 interface FoodieAppDataStore {
     suspend fun updateDataPersistenceTime(time: Long)
-    suspend fun getDataPersistenceTime(): Flow<Long>
+    suspend fun getDataPersistenceTime(): Long
 }
 
 class FoodieAppDataStoreImpl(private val dataStore: DataStore<Preferences>) : FoodieAppDataStore {
@@ -21,7 +20,5 @@ class FoodieAppDataStoreImpl(private val dataStore: DataStore<Preferences>) : Fo
         }
     }
 
-    override suspend fun getDataPersistenceTime() = dataStore.data.map { preferences ->
-        preferences[tagKey] ?: 0
-    }
+    override suspend fun getDataPersistenceTime(): Long = dataStore.data.first()[tagKey] ?: 0
 }
