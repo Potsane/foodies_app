@@ -84,34 +84,8 @@ kotlin {
 
             implementation(libs.kotlinx.datetime)
         }
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-            implementation(kotlin("test-common"))
-            implementation(kotlin("test-annotations-common"))
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-            implementation("io.mockk:mockk-common:1.12.5")
-            //implementation("io.mockk:mockk-jvm:1.12.5")
-            //implementation(libs.mockk)
-        }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
-        }
-
-        val iosX64Test by getting
-        val iosArm64Test by getting
-        val iosSimulatorArm64Test by getting
-        val iosTest by creating {
-            //dependsOn(commonTest)
-            iosX64Test.dependsOn(this)
-            iosArm64Test.dependsOn(this)
-            iosSimulatorArm64Test.dependsOn(this)
-        }
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("io.mockk:mockk:1.12.5")
-                implementation(libs.junit)
-            }
         }
     }
 }
