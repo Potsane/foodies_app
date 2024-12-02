@@ -24,7 +24,7 @@ kotlinxCoroutinesCore = "1.8.1"
 lifecycleViewmodelCompose = "2.8.0"
 coil3 = "3.0.0-alpha10"
 
-lifecycleViewModel = "2.8.2"
+lifecycleViewModel = "2.8.7"
 roomRuntime = "2.7.0-alpha05"
 sqliteBundled = "2.5.0-SNAPSHOT"
 
