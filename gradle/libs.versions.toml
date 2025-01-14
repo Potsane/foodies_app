@@ -16,7 +16,7 @@ junit = "4.13.2"
 kotlin = "2.0.0"
 
 kotlinxDatetime = "0.4.1"
-ktorClient = "2.3.11"
+ktorClient = "2.3.13"
 koin = "3.6.0-Beta4"
 koin-compose = "1.2.0-Beta4"
 roomCommon = "2.7.0-alpha05"
