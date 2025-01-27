@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
-    kotlin("plugin.serialization") version "1.9.20"
+    kotlin("plugin.serialization") version "2.1.10"
 
     //Room Plugins
     id("androidx.room") version "2.7.0-alpha05"
